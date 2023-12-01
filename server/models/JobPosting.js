@@ -8,12 +8,12 @@ const jobPostingSchema = new Schema({
 		required: true,
 		trim: true,
 	},
-	locationId: {
+	location: {
 		type: Schema.Types.ObjectId,
 		ref: 'Location',
 		required: true,
 	},
-	employerId: {
+	employer: {
 		type: Schema.Types.ObjectId,
 		ref: 'Employer',
 		required: true,
