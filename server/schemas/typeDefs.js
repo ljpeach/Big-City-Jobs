@@ -4,7 +4,7 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    #add more properties here
+    password: String
   }
 
   type Auth {
