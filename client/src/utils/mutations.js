@@ -10,4 +10,16 @@ mutation login($email: String!, $password: String!){
     }
 }`;
 
-// export const ADD_USER = gql``;
+export const ADD_USER = gql`
+    mutation AddUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+      user {
+        email
+        firstName
+        lastName
+        password
+        _id
+      }
+      token
+    }
+  }`;
