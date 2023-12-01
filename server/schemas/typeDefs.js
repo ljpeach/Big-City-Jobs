@@ -4,7 +4,21 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    #add more properties here
+    password: String
+  }
+
+  type Auth {
+    token: ID
+    user: User
+  }
+
+  type Query {
+    user: User
+  }
+
+  type Mutation {
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 `;
 
