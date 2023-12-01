@@ -31,7 +31,11 @@ const jobPostingSchema = new Schema({
 	},
 	applyLink: {
 		type: String,
-	}
+	},
+	pay: {
+		type: String,
+		default: 'N/A',
+	},
 });
 
 const JobPosting = mongoose.model('JobPosting', jobPostingSchema);
