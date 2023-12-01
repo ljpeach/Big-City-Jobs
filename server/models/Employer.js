@@ -16,7 +16,10 @@ const employerSchema = new Schema({
 	],
 	website: {
 		type: String,
-	}
+	},
+	description: {
+		type: String,
+	},
 });
 
 const Employer = mongoose.model('Employer', employerSchema);
