@@ -14,16 +14,22 @@ const resolvers = {
       throw AuthenticationError;
     },
     location: async (parent, args) => {
-      return await Location.findById(args._id);
+      return await Location.findById(args.locationId);
     },
     locations: async () => {
       return await Location.find({});
     },
     job: async (parent, args) => {
-      return await JobPosting.findById(args._id);
+      return await JobPosting.findById(args.jobId);
     },
     jobs: async () => {
       return await JobPosting.find({});
+    },
+    employer: async (parent, args) => {
+      return await Employer.findById(args.employerId);
+    },
+    employers: async () => {
+      return await Employer.find({});
     },
   },
   Mutation: {
@@ -50,6 +56,14 @@ const resolvers = {
 
       return { token, user };
     },
+    favoriteJob: async (parent, { jobId }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { jobId } },
+        { new: true }
+      );
+
+    }
   }
 };
 

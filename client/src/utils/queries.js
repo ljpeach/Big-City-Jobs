@@ -2,14 +2,13 @@ import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
 query currentUser {
-    user {
-      _id
-      email
-      firstName
-      lastName
-    }
+  user {
+    _id
+    email
+    firstName
+    lastName
   }
-  `;
+}`;
 
 export const QUERY_LOCATION = gql`
 query selectLocation($locationId: ID!) {
@@ -44,6 +43,16 @@ query selectJob($jobId: ID!) {
       _id
       name
     }
+    employer {
+      _id
+      name
+      website
+    }
+    details
+    available
+    applyLink
+    pay
+    postedDate
   }
 }`;
 
@@ -51,8 +60,34 @@ export const QUERY_JOBS = gql`
 query allJobs{
   jobs {
     _id
+    name
     location {
+      _id
       name
     }
+  }
+}`;
+
+export const QUERY_EMPLOYER = gql`
+query selectEmployer($employerId: ID!) {
+  employer(employerId: $employerId) {
+    _id
+    description
+    website
+    name
+    jobPostings {
+      _id
+      name
+    }
+  }
+}`;
+
+export const QUERY_EMPLOYERS = gql`
+query allEmployers {
+  employers {
+    _id
+    description
+    website
+    name
   }
 }`;
