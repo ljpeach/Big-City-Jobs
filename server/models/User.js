@@ -26,6 +26,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  savedJobs: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'JobPosting',
+		}
+	],
   // additional schemas ad hoc
 });
 
