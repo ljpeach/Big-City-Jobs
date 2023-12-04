@@ -26,6 +26,10 @@ const typeDefs = `
 
   type Query {
     user: User
+    location(locationId: ID!): Location
+    locations: [Location]
+    job(jobId: ID!): JobPosting
+    jobs: [JobPosting]
   }
 
   type Mutation {
