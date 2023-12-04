@@ -1,28 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         Your Logo
-      </a>
+      </Link>
 
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Donate
-            </a>
+            <Link className='nav-link' to='donate'>Donate</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="loginsignup">
               Login
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="loginsignup">
               Signup
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
