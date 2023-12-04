@@ -20,14 +20,11 @@ const jobPostingSchema = new Schema({
 	},
 	details: {
 		type: String,
-	},
-	postedDate: {
-		type: Date,
-		default: Date.now,
+		default: 'There is no description for this job. Please contact the employer for information.',
 	},
 	available: {
 		type: Boolean,
-		default: false,
+		default: true,
 	},
 	applyLink: {
 		type: String,
@@ -35,6 +32,10 @@ const jobPostingSchema = new Schema({
 	pay: {
 		type: String,
 		default: 'N/A',
+	},
+	postedDate: {
+		type: Date,
+		default: Date.now,
 	},
 });
 
