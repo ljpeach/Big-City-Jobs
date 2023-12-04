@@ -7,6 +7,18 @@ const typeDefs = `
     password: String
   }
 
+  type JobPosting {
+    _id: ID
+    name: String
+    location: Location
+  }
+
+  type Location {
+    _id: ID
+    name: String
+    jobPostings: [JobPosting]
+  }
+
   type Auth {
     token: ID
     user: User
