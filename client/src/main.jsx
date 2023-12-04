@@ -9,7 +9,7 @@ import HomePage from './pages/HomePage.jsx'
 import LoginSignup from './pages/LoginSignup.jsx'
 import EmployerPage from './pages/EmployerPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
-import ResultsPage from './pages/ProfilePage.jsx'
+import ResultsPage from './pages/ResultsPage.jsx'
 import DonationPage from './pages/DonationPage.jsx'
 // import './index.css'
 
