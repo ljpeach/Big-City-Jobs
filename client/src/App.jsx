@@ -34,8 +34,10 @@ function App() {
 
   return (
     <>
-    <Header />
-      <Outlet />
+      <ApolloProvider client={client}>
+        <Header />
+        <Outlet />
+      </ApolloProvider>
     </>
   )
 }
