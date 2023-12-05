@@ -25,8 +25,11 @@ mutation AddUser($firstName: String!, $lastName: String!, $email: String!, $pass
 }`;
 
 export const FAVORITE_JOB = gql`
-mutation favoriteJob($jobId: ID!){
-  favoriteJob(jobId: $jobId){
-    _id
+mutation Mutation($jobId: ID!) {
+  favoriteJob(jobId: $jobId) {
+    email
+    savedJobs {
+      _id
+    }
   }
 }`;
