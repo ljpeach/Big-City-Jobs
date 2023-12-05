@@ -14,9 +14,9 @@ const Footer = () => {
 			<span class="px-2">
 				Visit our GitHubs:
 			</span>
-			<div class="d-flex justify-content-center">
-				{collaborators.map((collaborator) => (
-					<a href={collaborator.link} class="link-secondary px-1">{collaborator.name}</a>
+			<div className="d-flex justify-content-center">
+				{collaborators.map((collaborator, i) => (
+					<a href={collaborator.link} key={i} className="link-secondary px-1">{collaborator.name}</a>
 				))}
 			</div>
 		</footer>
