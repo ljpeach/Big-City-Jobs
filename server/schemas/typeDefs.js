@@ -47,6 +47,7 @@ const typeDefs = `
     jobs: [JobPosting]
     employer(employerId: ID!): Employer
     employers: [Employer]
+    employerJobs(employerId: ID!): [JobPosting]
   }
 
   type Mutation {

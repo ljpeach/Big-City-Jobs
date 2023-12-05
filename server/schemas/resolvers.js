@@ -14,23 +14,26 @@ const resolvers = {
       throw AuthenticationError;
     },
     location: async (parent, args) => {
-      return await Location.findById(args.locationId);
+      return await Location.findById(args.locationId).populate('jobPostings');
     },
     locations: async () => {
-      return await Location.find({});
+      return await Location.find({}).populate('jobPostings');
     },
     job: async (parent, args) => {
-      return await JobPosting.findById(args.jobId);
+      return await JobPosting.findById(args.jobId).populate('employer');
     },
     jobs: async () => {
-      return await JobPosting.find({});
+      return await JobPosting.find({}).populate('employer');
     },
     employer: async (parent, args) => {
-      return await Employer.findById(args.employerId);
+      return await Employer.findById(args.employerId).populate('jobPostings');
     },
     employers: async () => {
       return await Employer.find({});
     },
+    employerJobs: async (parent, args) => {
+      return await JobPosting.find({ employer: args.employerId }).populate('location');
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

@@ -81,7 +81,7 @@ db.once('open', async () => {
 		{
 			name: 'Software Engineer',
 			location: locations[4],
-			employer: employers[0],
+			employer: employers[0]._id,
 			details: 'Become a Software Engineer for Google!',
 			available: true,
 			applyLink: 'N/A',
@@ -90,14 +90,14 @@ db.once('open', async () => {
 		{
 			name: 'Secret Agent',
 			location: locations[0],
-			employer: employers[3],
+			employer: employers[3]._id,
 			details: 'Shhhhhhh',
 			available: true,
 		},
 		{
 			name: 'Find My Dog',
 			location: locations[1],
-			employer: employers[4],
+			employer: employers[4]._id,
 			details: 'my dog is lost find him',
 			available: true,
 			pay: '$20',
@@ -105,13 +105,15 @@ db.once('open', async () => {
 		{
 			name: 'Fix this website everything is on fire!!!',
 			location: locations[2],
-			employer: employers[2],
+			employer: employers[2]._id,
 			details: 'help please everything is broken',
 			available: true,
 			pay: '$300,000/yr',
 		},
 	]);
 	console.log('jobPostings seeded');
+	console.log(employers[0]);
 
 	console.log('seeding complete');
+	process.exit();
 });
