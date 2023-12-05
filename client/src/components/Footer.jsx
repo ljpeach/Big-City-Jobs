@@ -10,7 +10,7 @@ const collaborators = [
 
 const Footer = () => {
 	return (
-		<footer class="d-flex justify-content-center mb-3 text-body-secondary smaller-text">
+		<footer class="d-flex justify-content-center py-1 my-1 text-body-secondary smaller-text position-absolute bottom-0 start-50 translate-middle-x">
 			<span class="px-2">
 				Visit our GitHubs:
 			</span>
