@@ -65,6 +65,11 @@ query allJobs{
       _id
       name
     }
+    employer {
+      _id
+      name
+      website
+    }
   }
 }`;
 
@@ -106,6 +111,11 @@ query EmployerJobs($employerId: ID!) {
     applyLink
     pay
     postedDate
+    employer {
+      _id
+      name
+      website
+    }
   }
 }
 `

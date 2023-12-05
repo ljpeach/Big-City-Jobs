@@ -32,7 +32,7 @@ const resolvers = {
       return await Employer.find({});
     },
     employerJobs: async (parent, args) => {
-      return await JobPosting.find({ employer: args.employerId }).populate('location');
+      return await JobPosting.find({ employer: args.employerId }).populate('location').populate('employer');
     }
   },
   Mutation: {
@@ -62,7 +62,7 @@ const resolvers = {
     favoriteJob: async (parent, { jobId }, context) => {
       return User.findOneAndUpdate(
         { _id: context.user._id },
-        { $addToSet: { jobId } },
+        { $addToSet: { savedJobs: jobId } },
         { new: true }
       );
     }

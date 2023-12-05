@@ -12,8 +12,8 @@ export default function EmployerPage() {
     const jobs = jobResult.data?.employerJobs;
     console.log(employer);
     return employerResult.loading || jobResult.loading ? (<div>loading</div>) : (
-        <div>
-            <section id='employerJobs'>
+        <div className='d-flex flex-row'>
+            <section id='employerJobs' className='col-9 p-3'>
                 <h3>Posted Jobs</h3>
                 {jobs.length ? (
                     <JobList
@@ -25,11 +25,11 @@ export default function EmployerPage() {
                     <p>This employer has not posted any jobs.</p>
                 )}
             </section>
-            <section id='employerInfo'>
+            <section id='employerInfo' className='col-3 p-3 border-start'>
                 <h3>{employer.name}</h3>
                 <Link to={employer.website}>Company Website</Link>
                 <p>{employer.description}</p>
             </section>
-        </div>
+        </div >
     );
 }
