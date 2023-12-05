@@ -65,6 +65,11 @@ query allJobs{
       _id
       name
     }
+    employer {
+      _id
+      name
+      website
+    }
   }
 }`;
 
@@ -91,3 +96,26 @@ query allEmployers {
     name
   }
 }`;
+
+export const QUERY_EMPLOYER_JOBS = gql`
+query EmployerJobs($employerId: ID!) {
+  employerJobs(employerId: $employerId) {
+    _id
+    name
+    location {
+      _id
+      name
+    }
+    details
+    available
+    applyLink
+    pay
+    postedDate
+    employer {
+      _id
+      name
+      website
+    }
+  }
+}
+`
