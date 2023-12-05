@@ -7,6 +7,10 @@ import App from './App.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import LoginSignup from './pages/LoginSignup.jsx'
+import EmployerPage from './pages/EmployerPage.jsx'
+import ProfilePage from './pages/ProfilePage.jsx'
+import ResultsPage from './pages/ResultsPage.jsx'
+import DonationPage from './pages/DonationPage.jsx'
 // import './index.css'
 
 const router = createBrowserRouter([
@@ -20,8 +24,24 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: 'loginsignup',
+        path: '/loginsignup',
         element: <LoginSignup />
+      },
+      {
+        path: '/employer/:employerId',
+        element: <EmployerPage />
+      },
+      {
+        path: '/profile',
+        element: <ProfilePage />
+      },
+      {
+        path: '/results',
+        element: <ResultsPage />
+      },
+      {
+        path: '/donate',
+        element: <DonationPage />
       }
     ]
   }
