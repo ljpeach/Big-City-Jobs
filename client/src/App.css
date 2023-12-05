@@ -1,5 +1,9 @@
 /* proprietary css file for customizing colors/spacings/font-sizes outside of bootstrap's scope */
 
+body {
+	min-height: 100vh;
+}
+
 .smaller-text {
 	font-size: small;
 }
