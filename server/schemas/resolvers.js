@@ -65,7 +65,6 @@ const resolvers = {
         { $addToSet: { jobId } },
         { new: true }
       );
-
     }
   }
 };

@@ -53,7 +53,7 @@ const typeDefs = `
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    favoriteJob(jobId: ID!): JobPosting
+    favoriteJob(jobId: ID!): User
   }
 `;
 

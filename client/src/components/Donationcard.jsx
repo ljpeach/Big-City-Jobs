@@ -9,7 +9,7 @@ function DonationCard() {
             <input type="number"></input>,
             <h2 className="donation-title">How much would you like to donate?</h2>,
             <input type="number"></input>,
-            <button type="button" className="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-success">Submit</button>
         </form>
     )
 };

@@ -81,7 +81,7 @@ db.once('open', async () => {
 		{
 			name: 'Software Engineer',
 			location: locations[4],
-			employer: employers[0]._id,
+			employer: employers[0],
 			details: 'Become a Software Engineer for Google!',
 			available: true,
 			applyLink: 'N/A',
@@ -90,14 +90,14 @@ db.once('open', async () => {
 		{
 			name: 'Secret Agent',
 			location: locations[0],
-			employer: employers[3]._id,
+			employer: employers[3],
 			details: 'Shhhhhhh',
 			available: true,
 		},
 		{
 			name: 'Find My Dog',
 			location: locations[1],
-			employer: employers[4]._id,
+			employer: employers[4],
 			details: 'my dog is lost find him',
 			available: true,
 			pay: '$20',
@@ -105,7 +105,7 @@ db.once('open', async () => {
 		{
 			name: 'Fix this website everything is on fire!!!',
 			location: locations[2],
-			employer: employers[2]._id,
+			employer: employers[2],
 			details: 'help please everything is broken',
 			available: true,
 			pay: '$300,000/yr',
