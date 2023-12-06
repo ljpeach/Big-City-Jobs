@@ -10,26 +10,31 @@ export default function EmployerPage() {
     const jobResult = useQuery(QUERY_EMPLOYER_JOBS, { variables: { employerId } });
     const employer = employerResult.data?.employer;
     const jobs = jobResult.data?.employerJobs;
-    console.log(employer);
     return employerResult.loading || jobResult.loading ? (<div>loading</div>) : (
-        <div className='d-flex flex-row'>
-            <section id='employerJobs' className='col-9 p-3'>
-                <h3>Posted Jobs</h3>
+        <div className='d-flex flex-md-row flex-column-reverse'>
+            <section id='employerJobs' className='col-12 col-md-9 p-2'>
                 {jobs.length ? (
                     <JobList
                         jobPostings={jobs}
-                        showTitle={false}
+                        title={`Jobs Posted by ${employer.name}`}
+                        showTitle={true}
                         showEmployer={false}
                     />
                 ) : (
                     <p>This employer has not posted any jobs.</p>
                 )}
             </section>
-            <section id='employerInfo' className='col-3 p-3 border-start'>
-                <h3>{employer.name}</h3>
-                <Link to={employer.website}>Company Website</Link>
-                <p>{employer.description}</p>
+            <section id='employerInfo' className='col-12 col-md-3 p-2'>
+                <div className="card">
+                    <div class="card-header bg-prop-primary text-white">
+                        <h3 className="card-title">{employer.name}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{employer.description}</p>
+                        <Link to={employer.website}>Company Website</Link>
+                    </div>
+                </div>
             </section>
-        </div >
+        </div>
     );
 }
