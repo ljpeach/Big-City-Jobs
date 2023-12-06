@@ -32,6 +32,12 @@ The deployed website can be found [here](https://cryptic-gorge-45528-e8e049cdd22
 
 The list of jobs are displayed for the user on the homepage. The user can signup or login to save their favorite jobs. 
 
+Dummy account:
+        firstName: 'John',
+		lastName: 'Doe',
+		email: 'jdoe@gmail.com',
+		password: 'password'
+
 ##  Technologies used
 
 This site was created using a MERN stack (MongoDB, Express.js, React, Node.js)
