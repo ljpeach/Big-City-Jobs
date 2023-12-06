@@ -42,7 +42,11 @@ Big City Jobs uses the MIT License.
 
 ## Contributors
 
-This site was created by Liam Peachey [github] (https://github.com/ljpeach), Haiden Ellis [github] (https://github.com/ArsonistChoir), Omar Lockhart [github] (https://github.com/omes773) and Kevin Patto [github] (https://github.com/kevinpatto).    
+This site was created by:
+- Liam Peachey [GitHub](https://github.com/ljpeach)
+- Haiden Ellis [GitHub](https://github.com/ArsonistChoir)
+- Omar Lockhart [GitHub](https://github.com/omes773)
+- Kevin Patto [GitHub](https://github.com/kevinpatto)    
 
 
 
