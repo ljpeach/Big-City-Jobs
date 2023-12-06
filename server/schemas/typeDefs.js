@@ -39,15 +39,29 @@ const typeDefs = `
     user: User
   }
 
+  type JobPage {
+    jobs: [JobPosting]
+    count: Int
+  }
+
+  type UserJobPage {
+    user: User
+    jobs: [JobPosting]
+    count: Int
+  }
+
   type Query {
     user: User
+    userJobsPages(page: Int, pageLimit: Int): UserJobPage
     location(locationId: ID!): Location
     locations: [Location]
     job(jobId: ID!): JobPosting
     jobs: [JobPosting]
+    jobsPages(page: Int, pageLimit: Int): JobPage
     employer(employerId: ID!): Employer
     employers: [Employer]
     employerJobs(employerId: ID!): [JobPosting]
+    employerJobsPages(employerId: ID!, page: Int, pageLimit: Int): JobPage
   }
 
   type Mutation {

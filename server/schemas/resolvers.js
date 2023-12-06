@@ -8,7 +8,28 @@ const resolvers = {
       if (context.user) {
         // console.log(context.user);
         // const user = await User.findById(context.user._id); // keep just in case
-        return await User.findById(context.user._id);
+        return await User.findById(context.user._id).populate('savedJobs');
+      }
+
+      throw AuthenticationError;
+    },
+    userJobsPages: async (parent, args, context) => {
+      // pagelimit, pages
+      if (context.user) {
+        // console.log(context.user);
+        // const user = await User.findById(context.user._id); // keep just in case
+        const profile = await User.findById(context.user._id).populate('savedJobs');
+        console.log(profile);
+        let start = args.page * args.pageLimit;
+        let end = start + args.pageLimit;
+        if (start >= profile.savedJobs.length || args.pageLimit == 0) {
+          return []
+        }
+        else if (end > arr.length) {
+          end = arr.length;
+        }
+        profile.savedJobs = profile.savedJobs.slice(start, end);;
+        return profile;
       }
 
       throw AuthenticationError;
@@ -25,6 +46,10 @@ const resolvers = {
     jobs: async () => {
       return await JobPosting.find({}).populate('employer').populate('location');
     },
+    jobsPages: async (parent, args) => {
+
+      return { jobs: await JobPosting.find({}).populate('employer').populate('location').skip(args.page * args.pageLimit).limit(args.pageLimit), count: await JobPosting.countDocuments({}) };
+    },
     employer: async (parent, args) => {
       return await Employer.findById(args.employerId).populate('jobPostings');
     },
@@ -33,7 +58,13 @@ const resolvers = {
     },
     employerJobs: async (parent, args) => {
       return await JobPosting.find({ employer: args.employerId }).populate('location').populate('employer');
-    }
+    },
+    employerJobsPages: async (parent, args) => {
+      return {
+        jobs: await JobPosting.find({ employer: args.employerId }).populate('employer').populate('location').skip(args.page * args.pageLimit).limit(args.pageLimit), count: await JobPosting.countDocuments({ employer: args.employerId })
+      };
+    },
+
   },
   Mutation: {
     addUser: async (parent, args) => {

@@ -78,6 +78,30 @@ query allJobs{
   }
 }`;
 
+export const QUERY_JOBS_PAG = gql`
+query JobsPages($page: Int, $pageLimit: Int) {
+  jobsPages(page: $page, pageLimit: $pageLimit) {
+    count
+    jobs {
+      _id
+      applyLink
+      available
+      details
+      employer {
+        _id
+        name
+      }
+      location {
+        _id
+        name
+      }
+      name
+      pay
+      postedDate
+    }
+  }
+}`;
+
 export const QUERY_EMPLOYER = gql`
 query selectEmployer($employerId: ID!) {
   employer(employerId: $employerId) {
