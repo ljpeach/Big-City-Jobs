@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="navbar navbar-expand-lg navbar-dark bg-dark p-2 d-flex justify-content-between">
       <Link className="navbar-brand" to="/">
-        Your Logo
+        Big City Job
       </Link>
 
       <ul className="navbar-nav">
