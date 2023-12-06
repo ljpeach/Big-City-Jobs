@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { FAVORITE_JOB } from "../utils/mutations";
 import Auth from '../utils/auth';
+import dayjs from 'dayjs';
 
 const JobList = ({
   jobPostings,
@@ -25,32 +26,52 @@ const JobList = ({
       {jobPostings &&
         jobPostings.map((job) => (
           <div key={job._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {showEmployer ? (
-                <Link
-                  className="text-light"
-                  to={`/employer/${job.employer._id}`}
-                >
-                  {job.employer.name}
-                </Link>
-              ) : (
-                <></>
-              )}
-              <span style={{ fontSize: '1rem' }}>
-                This job was posted on {new Date(parseInt(jobPostings[0].postedDate)).toString()}
-              </span>
-            </h4>
+            <div className="card-header bg-primary text-light p-2 m-0 d-flex justify-content-between">
+              <div className=''>
+                <h4>
+                  {job.name}
+                </h4>
+                <div style={{ fontSize: '1rem' }}>
+                  This job was posted on {dayjs(new Date(parseInt(jobPostings[0].postedDate))).format('DD/MM/YYYY [at] h:mm A')}
+                  {showEmployer ? (<span> by <span>
+                    <Link
+                      className="text-light"
+                      to={`/employer/${job.employer._id}`}
+                    >
+                      {job.employer.name}
+                    </Link>
+                  </span>
+                  </span>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+              <div className=''>
+                <p>Located in {job.location.name}</p>
+              </div>
+            </div>
             <div className="card-body bg-light p-2">
               <p>{job.details}</p>
             </div>
-            <div>
-              <Link
-                className="btn btn-primary btn-block btn-squared"
-                to={`/jobs/${job._id}`}
-              >
-                View details and apply for this job.
-              </Link>
-              {Auth.loggedIn() && <button onClick={() => { favJob({ variables: { jobId: job._id } }) }}>Add job to favorites</button>}
+            <div className='d-flex justify-content-between'>
+              <div id='extra-data' className='d-flex flex-row align-item-center'>
+                {/* <p className='mb-0 mx-1 align-self-center'>{(job.available) ? <>No longer</> : <></>} Available</p> */}
+                {job.available ?
+                  (<p className='mb-0 mx-1 align-self-center text-success'>Available</p>) :
+                  (<p className='mb-0 mx-1 align-self-center text-danger'>No Longer Available</p>)
+                }
+                <p className='mb-0 mx-1 align-self-center'>Pay Rate: {job.pay}</p>
+              </div>
+              <div id='links-and-actions'>
+                <Link
+                  className="btn btn-primary btn-block btn-squared m-2"
+                  to={`/jobs/${job._id}`}
+                >
+                  View details and apply for this job.
+                </Link>
+                {Auth.loggedIn() && <button className="btn btn-primary btn-block btn-squared m-2" onClick={() => { favJob({ variables: { jobId: job._id } }) }}>Add job to favorites</button>}
+              </div>
             </div>
           </div>
         ))}
