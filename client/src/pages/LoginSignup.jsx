@@ -73,10 +73,10 @@ function LoginSignup(props) {
   return (
     <>
       <div className="container my-3">
-        <form class="form-control mb-2" onSubmit={handleLogInFormSubmit}>
+        <form className="form-control mb-2" onSubmit={handleLogInFormSubmit}>
           <h2>Log In</h2>
-          <div class="mb-2">
-            <label for="login-email" class="form-label">Email address</label>
+          <div className="mb-2">
+            <label htmlFor="login-email" className="form-label">Email address</label>
             <input
               className="form-control"
               placeholder="youremail@test.com"
@@ -86,10 +86,10 @@ function LoginSignup(props) {
               onChange={handleLogInChange}
             />
           </div>
-          <div class="mb-2">
-            <label for="login-pwd" class="form-label">Password</label>
+          <div className="mb-2">
+            <label htmlFor="login-pwd" className="form-label">Password</label>
             <input
-              class="form-control"
+              className="form-control"
               placeholder="*****"
               name="password"
               type="password"
@@ -102,13 +102,13 @@ function LoginSignup(props) {
               Sorry, you entered your credentials incorrectly. Please try again.
             </div>
           ) : null}
-          <button type="submit" class="btn btn-outline-secondary">Log In</button>
+          <button type="submit" className="btn btn-outline-secondary">Log In</button>
         </form>
 
-        <form class="form-control mb-2" onSubmit={handleSignUpFormSubmit}>
+        <form className="form-control mb-2" onSubmit={handleSignUpFormSubmit}>
           <h2>Sign Up</h2>
-          <div class="mb-2">
-            <label for="first-name" class="form-label">First Name</label>
+          <div className="mb-2">
+            <label htmlFor="first-name" className="form-label">First Name</label>
             <input
               className="form-control"
               placeholder="First Name"
@@ -118,8 +118,8 @@ function LoginSignup(props) {
               onChange={handleSignUpChange}
             />
           </div>
-          <div class="mb-2">
-            <label for="last-name" class="form-label">Last Name</label>
+          <div className="mb-2">
+            <label htmlFor="last-name" className="form-label">Last Name</label>
             <input
               className="form-control"
               placeholder="Last Name"
@@ -129,8 +129,8 @@ function LoginSignup(props) {
               onChange={handleSignUpChange}
             />
           </div>
-          <div class="mb-2">
-            <label for="signup-email" class="form-label">Email address</label>
+          <div className="mb-2">
+            <label htmlFor="signup-email" className="form-label">Email address</label>
             <input
               className="form-control"
               placeholder="youremail@test.com"
@@ -140,10 +140,10 @@ function LoginSignup(props) {
               onChange={handleSignUpChange}
             />
           </div>
-          <div class="mb-2">
-            <label for="signup-pwd" class="form-label">Password</label>
+          <div className="mb-2">
+            <label htmlFor="signup-pwd" className="form-label">Password</label>
             <input
-              class="form-control"
+              className="form-control"
               placeholder="*****"
               name="password"
               type="password"
@@ -156,7 +156,7 @@ function LoginSignup(props) {
               {addUserError ? handleSignupError(addUserError.message) : null}
             </div>
           ) : null}
-          <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
+          <button type="submit" className="btn btn-outline-secondary">Sign Up</button>
         </form>
       </div>
     </>
