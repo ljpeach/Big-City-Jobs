@@ -30,7 +30,7 @@ This program can be run through a browser using the link to the the deployed app
 
 The deployed website can be found [here](https://cryptic-gorge-45528-e8e049cdd22a.herokuapp.com/).
 
-The list of jobs are displayed for the user on the homepage. The user can signup or login to save their favorite jobs. There is also a link to donate to the site for our generous visitors.
+The list of jobs are displayed for the user on the homepage. The user can signup or login to save their favorite jobs. 
 
 ##  Technologies used
 
