@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         // console.log(context.user);
         // const user = await User.findById(context.user._id); // keep just in case
-        return await User.findById(context.user._id);
+        return await User.findById(context.user._id).populate('savedJobs');
       }
 
       throw AuthenticationError;
