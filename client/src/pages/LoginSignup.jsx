@@ -30,7 +30,7 @@ function LoginSignup(props) {
       [name]: value,
     });
   };
-  
+
   // Sign Up Related Setup
   const [signUpFormState, setSignUpFormState] = useState({ email: '', password: '' });
   const [addUser, { error: addUserError }] = useMutation(ADD_USER);
@@ -66,96 +66,97 @@ function LoginSignup(props) {
     } else if (e.includes('User validation failed')) {
       return 'You must fill out all forms.';
     } else {
-      return 'Sorry, there was a problem';
+      return 'Sorry, there was a problem.';
     }
   }
 
   return (
     <>
-      <div className="container my-1">
-
-        <h2>Login</h2>
-        <form onSubmit={handleLogInFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="email">Email address:</label>
+      <div className="container my-3">
+        <form class="form-control mb-2" onSubmit={handleLogInFormSubmit}>
+          <h2>Log In</h2>
+          <div class="mb-2">
+            <label for="login-email" class="form-label">Email address</label>
             <input
+              className="form-control"
               placeholder="youremail@test.com"
               name="email"
               type="email"
-              id="email"
+              id="login-email"
               onChange={handleLogInChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="pwd">Password:</label>
+          <div class="mb-2">
+            <label for="login-pwd" class="form-label">Password</label>
             <input
-              placeholder="******"
+              class="form-control"
+              placeholder="*****"
               name="password"
               type="password"
-              id="pwd"
+              id="login-pwd"
               onChange={handleLogInChange}
             />
           </div>
           {logInError ? (
-            <div className="my-3 p-3 bg-danger text-white">
-              <p>Sorry, you entered your credentials incorrectly. Please try again.</p>
+            <div id="login-error" className="mb-2 py-1 px-3 bg-danger text-white text-center rounded">
+              Sorry, you entered your credentials incorrectly. Please try again.
             </div>
           ) : null}
-          <div className="flex-row flex-end">
-            <button type="submit">Submit</button>
-          </div>
+          <button type="submit" class="btn btn-outline-secondary">Log In</button>
         </form>
 
-        <h2>Signup</h2>
-        <form onSubmit={handleSignUpFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="firstName">First Name:</label>
+        <form class="form-control mb-2" onSubmit={handleSignUpFormSubmit}>
+          <h2>Sign Up</h2>
+          <div class="mb-2">
+            <label for="first-name" class="form-label">First Name</label>
             <input
-              placeholder="First"
-              name="firstName"
-              type="firstName"
-              id="firstName"
-              onChange={handleSignUpChange}
+              className="form-control"
+              placeholder="First Name"
+              name="first-name"
+              type="text"
+              id="first-name"
+              onChange={handleLogInChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="lastName">Last Name:</label>
+          <div class="mb-2">
+            <label for="last-name" class="form-label">Last Name</label>
             <input
-              placeholder="Last"
-              name="lastName"
-              type="lastName"
-              id="lastName"
-              onChange={handleSignUpChange}
+              className="form-control"
+              placeholder="Last Name"
+              name="last-name"
+              type="text"
+              id="last-name"
+              onChange={handleLogInChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="email">Email:</label>
+          <div class="mb-2">
+            <label for="signup-email" class="form-label">Email address</label>
             <input
+              className="form-control"
               placeholder="youremail@test.com"
               name="email"
               type="email"
-              id="email"
-              onChange={handleSignUpChange}
+              id="signup-email"
+              onChange={handleLogInChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
-            <label htmlFor="pwd">Password:</label>
+          <div class="mb-2">
+            <label for="signup-pwd" class="form-label">Password</label>
             <input
-              placeholder="******"
+              class="form-control"
+              placeholder="*****"
               name="password"
               type="password"
-              id="pwd"
-              onChange={handleSignUpChange}
+              id="signup-pwd"
+              onChange={handleLogInChange}
             />
           </div>
           {addUserError ? (
-            <div className="my-3 p-3 bg-danger text-white">
-              <p>{handleSignupError(addUserError.message)}</p>
+            <div id="signup-error" className="mb-2 py-1 px-3 bg-danger text-white text-center rounded">
+              {handleSignupError(addUserError.message)}
             </div>
           ) : null}
-          <div className="flex-row flex-end">
-            <button type="submit">Submit</button>
-          </div>
+          <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
         </form>
       </div>
     </>
