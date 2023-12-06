@@ -26,7 +26,7 @@ const JobList = ({
       {jobPostings &&
         jobPostings.map((job) => (
           <div key={job._id} className="card mb-3">
-            <div className="card-header bg-primary text-light p-2 m-0 d-flex justify-content-between">
+            <div className="card-header bg-prop-primary text-light p-2 m-0 d-flex justify-content-between">
               <div className=''>
                 <h4>
                   {job.name}
