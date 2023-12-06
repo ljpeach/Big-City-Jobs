@@ -54,6 +54,7 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     favoriteJob(jobId: ID!): User
+    removeJob(jobId: ID!): User
   }
 `;
 

@@ -33,3 +33,13 @@ mutation Mutation($jobId: ID!) {
     }
   }
 }`;
+
+export const REMOVE_JOB = gql`
+mutation Mutation($jobId: ID!) {
+  removeJob(jobId: $jobId) {
+    email
+    savedJobs {
+      _id
+    }
+  }
+}`;
