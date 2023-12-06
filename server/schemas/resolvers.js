@@ -65,7 +65,14 @@ const resolvers = {
         { $addToSet: { savedJobs: jobId } },
         { new: true }
       );
-    }
+    },
+    removeJob: async (parent, { jobId }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { savedJobs: jobId } },
+        { new: true }
+      );
+    },
   }
 };
 
