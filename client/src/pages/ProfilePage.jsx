@@ -4,7 +4,6 @@ import JobList from '../components/JobList';
 
 export default function ProfilePage() {
 	const { loading, data, error } = useQuery(QUERY_USER);
-	console.log(data);
 
 	const jobs = data?.user.savedJobs;
 

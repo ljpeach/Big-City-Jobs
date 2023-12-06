@@ -17,9 +17,6 @@ const JobList = ({
 
   const [favJob, res] = useMutation(FAVORITE_JOB);
 
-  console.log(jobPostings);
-  console.log(res);
-
   return (
     <div>
       {showTitle && <h3 className="text-center">{title}</h3>}
