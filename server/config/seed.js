@@ -112,8 +112,8 @@ db.once('open', async () => {
 		},
 	]);
 	console.log('jobPostings seeded');
+	console.log(employers[0]);
 
 	console.log('seeding complete');
-
 	process.exit();
 });

@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 function LoginSignup(props) {
   // Log In Related Setup
   const [logInFormState, setLogInFormState] = useState({ email: '', password: '' });
-  const [login, { logInError }] = useMutation(LOGIN);
+  const [login, { error: logInError }] = useMutation(LOGIN);
 
   const handleLogInFormSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +19,7 @@ function LoginSignup(props) {
       Auth.login(token);
     } catch (e) {
       console.log('error', e);
+      console.log(logInError);
     }
   };
 
@@ -29,10 +30,10 @@ function LoginSignup(props) {
       [name]: value,
     });
   };
-
+  
   // Sign Up Related Setup
   const [signUpFormState, setSignUpFormState] = useState({ email: '', password: '' });
-  const [addUser, { addUserError }] = useMutation(ADD_USER);
+  const [addUser, { error: addUserError }] = useMutation(ADD_USER);
 
   const handleSignUpFormSubmit = async (event) => {
     event.preventDefault();
@@ -56,6 +57,18 @@ function LoginSignup(props) {
       [name]: value,
     });
   };
+
+  const handleSignupError = (e) => {
+    if (e.includes('is shorter than the minimum allowed length (5).')) {
+      return 'Your password must be at least 5 characters long.';
+    } else if (e.includes('E11000 duplicate key error collection')) {
+      return 'There is already an account with that email.';
+    } else if (e.includes('User validation failed')) {
+      return 'You must fill out all forms.';
+    } else {
+      return 'Sorry, there was a problem';
+    }
+  }
 
   return (
     <>
@@ -84,8 +97,8 @@ function LoginSignup(props) {
             />
           </div>
           {logInError ? (
-            <div>
-              <p className="error-text">The provided credentials are incorrect</p>
+            <div className="my-3 p-3 bg-danger text-white">
+              <p>Sorry, you entered your credentials incorrectly. Please try again.</p>
             </div>
           ) : null}
           <div className="flex-row flex-end">
@@ -135,6 +148,11 @@ function LoginSignup(props) {
               onChange={handleSignUpChange}
             />
           </div>
+          {addUserError ? (
+            <div className="my-3 p-3 bg-danger text-white">
+              <p>{handleSignupError(addUserError.message)}</p>
+            </div>
+          ) : null}
           <div className="flex-row flex-end">
             <button type="submit">Submit</button>
           </div>
