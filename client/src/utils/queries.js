@@ -65,6 +65,11 @@ query allJobs{
       _id
       name
     }
+    details
+    available
+    applyLink
+    pay
+    postedDate
     employer {
       _id
       name

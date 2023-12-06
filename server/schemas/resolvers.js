@@ -23,7 +23,7 @@ const resolvers = {
       return await JobPosting.findById(args.jobId).populate('employer');
     },
     jobs: async () => {
-      return await JobPosting.find({}).populate('employer');
+      return await JobPosting.find({}).populate('employer').populate('location');
     },
     employer: async (parent, args) => {
       return await Employer.findById(args.employerId).populate('jobPostings');

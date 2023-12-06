@@ -56,7 +56,6 @@ const JobList = ({
             </div>
             <div className='d-flex justify-content-between'>
               <div id='extra-data' className='d-flex flex-row align-item-center'>
-                {/* <p className='mb-0 mx-1 align-self-center'>{(job.available) ? <>No longer</> : <></>} Available</p> */}
                 {job.available ?
                   (<p className='mb-0 mx-1 align-self-center text-success'>Available</p>) :
                   (<p className='mb-0 mx-1 align-self-center text-danger'>No Longer Available</p>)

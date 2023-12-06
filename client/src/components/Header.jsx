@@ -18,12 +18,13 @@ const Header = () => {
         {
           Auth.loggedIn() ? (
             <>
-            <li className="nav-item">
-            <Link className="nav-link" to="/profile">Profile</Link>
-          </li>
-            <li className="nav-item">
-              <Link className="nav-link" onClick={logout}>Logout</Link>
-            </li> </>
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">Profile</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={logout}>Logout</Link>
+              </li>
+            </>
           ) : (
             <li className="nav-item">
               <Link className="nav-link" to="loginsignup">Log In/Sign Up</Link>
