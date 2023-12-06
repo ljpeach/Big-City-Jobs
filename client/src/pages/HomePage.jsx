@@ -1,28 +1,29 @@
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
-import { useEffect } from 'react';
+import { QUERY_JOBS } from '../utils/queries';
+import JobList from '../components/JobList';
+
 export default function HomePage() {
-    const { loading, data } = useQuery(QUERY_USER);
-    const profile = data?.user || 'not working';
-    useEffect(() => {
-    }, [])
-    console.log(data);
-    return (
-        <>
-            <div>This is Home. Logged in: {Auth.loggedIn().toString()}</div>
-            {
-                Auth.loggedIn() ? (
-                    <ul>
-                        <li>First: {data?.user.firstName}</li>
-                        <li>Last: {data?.user.lastName}</li>
-                        <li>Email: {data?.user.email}</li>
-                        <li>ID: {data?.user._id}</li>
-                    </ul>
+    
+    const {loading, data, error} = useQuery(QUERY_JOBS);
+    
+    
+    const jobs = data?.jobs;
+    return loading ? (<div>loading</div>) : (
+        <div className='d-flex flex-row'>
+            <section id='jobs' className='col-9 p-3'>
+                <h3>Posted Jobs</h3>
+                {jobs.length ? (
+                    <JobList
+                        jobPostings={jobs}
+                        showTitle={false}
+                        showEmployer={true}
+                    />
                 ) : (
-                    <div>Not signed in.</div>
-                )
-            }
-        </>
+                    <p>No one has posted any jobs.</p>
+                )}
+            </section>
+            
+        </div >
     );
 }
