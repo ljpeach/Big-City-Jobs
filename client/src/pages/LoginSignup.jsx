@@ -112,10 +112,10 @@ function LoginSignup(props) {
             <input
               className="form-control"
               placeholder="First Name"
-              name="first-name"
+              name="firstName"
               type="text"
               id="first-name"
-              onChange={handleLogInChange}
+              onChange={handleSignUpChange}
             />
           </div>
           <div class="mb-2">
@@ -123,10 +123,10 @@ function LoginSignup(props) {
             <input
               className="form-control"
               placeholder="Last Name"
-              name="last-name"
+              name="lastName"
               type="text"
               id="last-name"
-              onChange={handleLogInChange}
+              onChange={handleSignUpChange}
             />
           </div>
           <div class="mb-2">
@@ -137,7 +137,7 @@ function LoginSignup(props) {
               name="email"
               type="email"
               id="signup-email"
-              onChange={handleLogInChange}
+              onChange={handleSignUpChange}
             />
           </div>
           <div class="mb-2">
@@ -148,12 +148,12 @@ function LoginSignup(props) {
               name="password"
               type="password"
               id="signup-pwd"
-              onChange={handleLogInChange}
+              onChange={handleSignUpChange}
             />
           </div>
           {addUserError ? (
             <div id="signup-error" className="mb-2 py-1 px-3 bg-danger text-white text-center rounded">
-              {handleSignupError(addUserError.message)}
+              {addUserError ? handleSignupError(addUserError.message) : null}
             </div>
           ) : null}
           <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
