@@ -31,9 +31,9 @@ const Header = () => {
             </li>
           )
         }
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className='nav-link' to='donate'>Donate</Link>
-        </li>
+        </li> */}
       </ul>
     </header>
   );
