@@ -9,7 +9,6 @@ const resolvers = {
         // console.log(context.user);
         // const user = await User.findById(context.user._id); // keep just in case
         return await User.findById(context.user._id).populate('savedJobs');
-<<<<<<< HEAD
       }
 
       throw AuthenticationError;
@@ -31,8 +30,6 @@ const resolvers = {
         }
         profile.savedJobs = profile.savedJobs.slice(start, end);;
         return profile;
-=======
->>>>>>> dev
       }
 
       throw AuthenticationError;
