@@ -4,15 +4,13 @@ import { QUERY_JOBS } from '../utils/queries';
 import JobList from '../components/JobList';
 
 export default function HomePage() {
-    
     const {loading, data, error} = useQuery(QUERY_JOBS);
-    
     
     const jobs = data?.jobs;
     return loading ? (<div>loading</div>) : (
         <div className='d-flex flex-row'>
-            <section id='jobs' className='col-9 p-3'>
-                <h3>Posted Jobs</h3>
+            <section id='jobs' className='col-12 col-md-9 p-2 mx-auto'>
+                <h3 className="text-center">Posted Jobs</h3>
                 {jobs.length ? (
                     <JobList
                         jobPostings={jobs}
