@@ -60,12 +60,12 @@ const JobList = ({
                 <p className='mb-0 mx-1 align-self-center'>Pay Rate: {job.pay}</p>
               </div>
               <div id='links-and-actions'>
-                <Link
+                {/* <Link
                   className="btn btn-primary btn-block btn-squared m-2"
                   to={`/jobs/${job._id}`}
                 >
                   View details and apply for this job.
-                </Link>
+                </Link> */}
                 {Auth.loggedIn() && <button className="btn btn-primary btn-block btn-squared m-2" onClick={() => { favJob({ variables: { jobId: job._id } }) }}>Add job to favorites</button>}
               </div>
             </div>
