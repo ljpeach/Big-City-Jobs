@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import JobList from '../components/JobListPaginated';
 
 export default function HomePage() {
+<<<<<<< HEAD
 
     // const { loading, data, error } = useQuery(QUERY_JOBS);
     const [qString, setQString] = useSearchParams();
@@ -18,11 +19,16 @@ export default function HomePage() {
     const jobs = data?.jobsPages.jobs || [];
     const count = Math.ceil(parseInt(data?.jobsPages.count) / pageLim);
     console.log(count);
+=======
+    const {loading, data, error} = useQuery(QUERY_JOBS);
+    
+    const jobs = data?.jobs;
+>>>>>>> dev
     return loading ? (<div>loading</div>) : (
         <div className='d-flex flex-row'>
-            <section id='jobs' className='col-9 p-3'>
-                <h3>Posted Jobs</h3>
+            <section id='jobs' className='col-12 col-md-9 p-2 mx-auto'>
                 {jobs.length ? (
+<<<<<<< HEAD
                     <>
                         <JobList
                             jobPostings={jobs}
@@ -39,6 +45,14 @@ export default function HomePage() {
                             </ul>
                         </nav>
                     </>
+=======
+                    <JobList
+                        jobPostings={jobs}
+                        title="Posted Jobs"
+                        showTitle={true}
+                        showEmployer={true}
+                    />
+>>>>>>> dev
                 ) : (
                     <p>No one has posted any jobs.</p>
                 )}

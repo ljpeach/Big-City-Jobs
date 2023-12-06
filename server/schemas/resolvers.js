@@ -9,6 +9,7 @@ const resolvers = {
         // console.log(context.user);
         // const user = await User.findById(context.user._id); // keep just in case
         return await User.findById(context.user._id).populate('savedJobs');
+<<<<<<< HEAD
       }
 
       throw AuthenticationError;
@@ -30,6 +31,8 @@ const resolvers = {
         }
         profile.savedJobs = profile.savedJobs.slice(start, end);;
         return profile;
+=======
+>>>>>>> dev
       }
 
       throw AuthenticationError;
@@ -41,7 +44,7 @@ const resolvers = {
       return await Location.find({}).populate('jobPostings');
     },
     job: async (parent, args) => {
-      return await JobPosting.findById(args.jobId).populate('employer');
+      return await JobPosting.findById(args.jobId).populate('employer').populate('location');
     },
     jobs: async () => {
       return await JobPosting.find({}).populate('employer').populate('location');
@@ -96,7 +99,14 @@ const resolvers = {
         { $addToSet: { savedJobs: jobId } },
         { new: true }
       );
-    }
+    },
+    removeJob: async (parent, { jobId }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { savedJobs: jobId } },
+        { new: true }
+      );
+    },
   }
 };
 

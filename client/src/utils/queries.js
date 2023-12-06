@@ -7,6 +7,24 @@ query currentUser {
     email
     firstName
     lastName
+    savedJobs {
+      _id
+      name
+      location {
+        _id
+        name
+      }
+      employer {
+        _id
+        name
+        website
+      }
+      details
+      available
+      applyLink
+      pay
+      postedDate
+    }
   }
 }`;
 
