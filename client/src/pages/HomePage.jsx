@@ -10,11 +10,11 @@ export default function HomePage() {
     return loading ? (<div>loading</div>) : (
         <div className='d-flex flex-row'>
             <section id='jobs' className='col-12 col-md-9 p-2 mx-auto'>
-                <h3 className="text-center">Posted Jobs</h3>
                 {jobs.length ? (
                     <JobList
                         jobPostings={jobs}
-                        showTitle={false}
+                        title="Posted Jobs"
+                        showTitle={true}
                         showEmployer={true}
                     />
                 ) : (
