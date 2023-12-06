@@ -34,7 +34,7 @@ export default function HomePage() {
                                 <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: 0 }); }}>First</button></li>
                                 <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage > 1 ? currPage - 1 : 0 }); }}>Previous</button></li>
                                 <li class="page-item"><button class="page-link active">{currPage + 1}</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage < count - 1 ? currPage + 1 : count - 1 }); }}>Next</button></li>
+                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage + 1 }); }}>Next</button></li>
                                 <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: count - 1 }); }}>Last</button></li>
                             </ul>
                         </nav>

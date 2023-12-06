@@ -164,5 +164,28 @@ query EmployerJobs($employerId: ID!) {
       website
     }
   }
-}
-`
+}`
+
+export const QUERY_EMPLOYER_JOBS_PAGES = gql`
+query EmployerJobsPages($employerId: ID!, $page: Int, $pageLimit: Int) {
+  employerJobsPages(employerId: $employerId, page: $page, pageLimit: $pageLimit) {
+    count
+    jobs {
+      _id
+      applyLink
+      available
+      details
+      employer {
+        _id
+        name
+      }
+      location {
+        _id
+        name
+      }
+      name
+      pay
+      postedDate
+    }
+  }
+}`
