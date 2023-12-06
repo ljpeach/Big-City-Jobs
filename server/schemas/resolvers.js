@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         // console.log(context.user);
         // const user = await User.findById(context.user._id); // keep just in case
-        return await User.findById(context.user._id);
+        return await User.findById(context.user._id).populate('savedJobs');
       }
 
       throw AuthenticationError;
@@ -20,7 +20,7 @@ const resolvers = {
       return await Location.find({}).populate('jobPostings');
     },
     job: async (parent, args) => {
-      return await JobPosting.findById(args.jobId).populate('employer');
+      return await JobPosting.findById(args.jobId).populate('employer').populate('location');
     },
     jobs: async () => {
       return await JobPosting.find({}).populate('employer').populate('location');
