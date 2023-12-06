@@ -1,5 +1,24 @@
 /* proprietary css file for customizing colors/spacings/font-sizes outside of bootstrap's scope */
 
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--tertiary);
+	--primary: #0A2239;
+	--secondary: #1D84B5;
+	--tertiary: #CCC;
+}
+
 .smaller-text {
 	font-size: small;
+}
+
+/* proprietary primary color */
+.bg-prop-primary {
+	background-color: var(--primary);
+}
+
+.bg-prop-secondary {
+	background-color: var(--secondary);
 }

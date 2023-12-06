@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { FAVORITE_JOB } from "../utils/mutations";
 import Auth from '../utils/auth';
@@ -17,13 +18,16 @@ const JobList = ({
 
   const [favJob, res] = useMutation(FAVORITE_JOB);
 
+  console.log(jobPostings);
+  console.log(res);
+
   return (
     <div>
-      {showTitle && <h3 className="text-center">{title}</h3>}
+      {showTitle && <h3>{title}</h3>}
       {jobPostings &&
         jobPostings.map((job) => (
           <div key={job._id} className="card mb-3">
-            <div className="card-header bg-prop-primary text-light p-2 m-0 d-flex justify-content-between">
+            <div className="card-header bg-primary text-light p-2 m-0 d-flex justify-content-between">
               <div className=''>
                 <h4>
                   {job.name}
@@ -60,12 +64,12 @@ const JobList = ({
                 <p className='mb-0 mx-1 align-self-center'>Pay Rate: {job.pay}</p>
               </div>
               <div id='links-and-actions'>
-                {/* <Link
+                <Link
                   className="btn btn-primary btn-block btn-squared m-2"
                   to={`/jobs/${job._id}`}
                 >
                   View details and apply for this job.
-                </Link> */}
+                </Link>
                 {Auth.loggedIn() && <button className="btn btn-primary btn-block btn-squared m-2" onClick={() => { favJob({ variables: { jobId: job._id } }) }}>Add job to favorites</button>}
               </div>
             </div>

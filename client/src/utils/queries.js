@@ -7,6 +7,24 @@ query currentUser {
     email
     firstName
     lastName
+    savedJobs {
+      _id
+      name
+      location {
+        _id
+        name
+      }
+      employer {
+        _id
+        name
+        website
+      }
+      details
+      available
+      applyLink
+      pay
+      postedDate
+    }
   }
 }`;
 
@@ -65,6 +83,40 @@ query allJobs{
       _id
       name
     }
+    details
+    available
+    applyLink
+    pay
+    postedDate
+    employer {
+      _id
+      name
+      website
+    }
+  }
+}`;
+
+export const QUERY_JOBS_PAG = gql`
+query JobsPages($page: Int, $pageLimit: Int) {
+  jobsPages(page: $page, pageLimit: $pageLimit) {
+    count
+    jobs {
+      _id
+      applyLink
+      available
+      details
+      employer {
+        _id
+        name
+      }
+      location {
+        _id
+        name
+      }
+      name
+      pay
+      postedDate
+    }
   }
 }`;
 
@@ -91,3 +143,49 @@ query allEmployers {
     name
   }
 }`;
+
+export const QUERY_EMPLOYER_JOBS = gql`
+query EmployerJobs($employerId: ID!) {
+  employerJobs(employerId: $employerId) {
+    _id
+    name
+    location {
+      _id
+      name
+    }
+    details
+    available
+    applyLink
+    pay
+    postedDate
+    employer {
+      _id
+      name
+      website
+    }
+  }
+}`
+
+export const QUERY_EMPLOYER_JOBS_PAGES = gql`
+query EmployerJobsPages($employerId: ID!, $page: Int, $pageLimit: Int) {
+  employerJobsPages(employerId: $employerId, page: $page, pageLimit: $pageLimit) {
+    count
+    jobs {
+      _id
+      applyLink
+      available
+      details
+      employer {
+        _id
+        name
+      }
+      location {
+        _id
+        name
+      }
+      name
+      pay
+      postedDate
+    }
+  }
+}`

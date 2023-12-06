@@ -4,9 +4,9 @@ const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
 	console.log('cleaning database...');
-	await cleanDB('JobPosting', 'JobPosting');
-	await cleanDB('Employer', 'Employer');
-	await cleanDB('Location', 'Location');
+	await cleanDB('JobPosting', 'jobpostings');
+	await cleanDB('Employer', 'employers');
+	await cleanDB('Location', 'locations');
 	await cleanDB('User', 'users');
 	console.log('database cleaned');
 
@@ -111,7 +111,24 @@ db.once('open', async () => {
 			pay: '$300,000/yr',
 		},
 	]);
+
+	const moreJobPostings = [];
+
+	const dummyStrings = ['a', 'be', 'aaron', 'beb', 'quw', 'fjowf', '123123', '10r', 'ebr', 'bwbwbwb',];
+	for (let i = 0; i < 100; i++) {
+		moreJobPostings.push({
+			name: dummyStrings[Math.floor(Math.random() * dummyStrings.length)],
+			location: locations[Math.floor(Math.random() * 5)],
+			employer: employers[Math.floor(Math.random() * 5)],
+			details: dummyStrings[Math.floor(Math.random() * dummyStrings.length)],
+			available: ((Math.floor(Math.random() * 2) === 1) ? true : false),
+		})
+	}
+
+	await JobPosting.insertMany(moreJobPostings);
+
 	console.log('jobPostings seeded');
 
 	console.log('seeding complete');
+	process.exit();
 });
