@@ -6,8 +6,17 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        // console.log(context.user);
-        // const user = await User.findById(context.user._id); // keep just in case
+        const user = await User.findById(context.user._id).populate(
+          {
+            path: 'savedJobs',
+            populate: { path: 'employer' }
+          })
+          .populate(
+            {
+              path: 'savedJobs',
+              populate: { path: 'location' }
+            });
+        return user;
         return await User.findById(context.user._id).populate('savedJobs');
       }
 
