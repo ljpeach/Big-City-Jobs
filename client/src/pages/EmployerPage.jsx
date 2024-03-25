@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_EMPLOYER, QUERY_EMPLOYER_JOBS, QUERY_EMPLOYER_JOBS_PAGES } from '../utils/queries';
 import JobList from '../components/JobList';
+import PageNav from '../components/PageNav';
 
 export default function EmployerPage() {
     const { employerId } = useParams();
@@ -22,7 +23,6 @@ export default function EmployerPage() {
     return employerResult.loading || pagesRes.loading ? (<div>loading</div>) : (
         <div className='d-flex flex-md-row flex-column-reverse'>
             <section id='employerJobs' className='col-12 col-md-9 p-2'>
-                <h3>Posted Jobs</h3>
                 {jobs.length ? (
                     <>
                         <JobList
@@ -31,15 +31,11 @@ export default function EmployerPage() {
                             showTitle={true}
                             showEmployer={false}
                         />
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: 0 }); }}>First</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage > 1 ? currPage - 1 : 0 }); }}>Previous</button></li>
-                                <li class="page-item"><button class="page-link active">{currPage + 1}</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage < count - 1 ? currPage + 1 : count - 1 }); }}>Next</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: count - 1 }); }}>Last</button></li>
-                            </ul>
-                        </nav>
+                        <PageNav
+                            count={count}
+                            currPage={currPage}
+                            setter={setQString}
+                        />
                     </>
                 ) : (
                     <p>This employer has not posted any jobs.</p>
@@ -47,10 +43,10 @@ export default function EmployerPage() {
             </section>
             <section id='employerInfo' className='col-12 col-md-3 p-2'>
                 <div className="card">
-                    <div class="card-header bg-prop-primary text-white">
+                    <div className="card-header bg-prop-primary text-white">
                         <h3 className="card-title">{employer.name}</h3>
                     </div>
-                    <div class="card-body">
+                    <div className="card-body">
                         <p>{employer.description}</p>
                         <Link to={employer.website}>Company Website</Link>
                     </div>

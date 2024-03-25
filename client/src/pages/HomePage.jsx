@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_JOBS_PAG } from '../utils/queries';
 import { useSearchParams } from 'react-router-dom';
 import JobList from '../components/JobList';
+import PageNav from '../components/PageNav';
 
 export default function HomePage() {
 
@@ -29,15 +30,11 @@ export default function HomePage() {
                             showTitle={false}
                             showEmployer={true}
                         />
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: 0 }); }}>First</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage > 1 ? currPage - 1 : 0 }); }}>Previous</button></li>
-                                <li class="page-item"><button class="page-link active">{currPage + 1}</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: currPage + 1 }); }}>Next</button></li>
-                                <li class="page-item"><button class="page-link" onClick={() => { setQString({ page: count - 1 }); }}>Last</button></li>
-                            </ul>
-                        </nav>
+                        <PageNav
+                            count={count}
+                            currPage={currPage}
+                            setter={setQString}
+                        />
                     </>
                 ) : (
                     <p>No one has posted any jobs.</p>
