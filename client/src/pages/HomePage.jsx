@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_JOBS_PAG } from '../utils/queries';
 import { useSearchParams } from 'react-router-dom';
-import JobList from '../components/JobListPaginated';
+import JobList from '../components/JobList';
 
 export default function HomePage() {
 
