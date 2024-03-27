@@ -6,8 +6,17 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        // console.log(context.user);
-        // const user = await User.findById(context.user._id); // keep just in case
+        const user = await User.findById(context.user._id).populate(
+          {
+            path: 'savedJobs',
+            populate: { path: 'employer' }
+          })
+          .populate(
+            {
+              path: 'savedJobs',
+              populate: { path: 'location' }
+            });
+        return user;
         return await User.findById(context.user._id).populate('savedJobs');
       }
 
@@ -32,6 +41,13 @@ const resolvers = {
         return profile;
       }
 
+      throw AuthenticationError;
+    },
+    userFaved: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id);
+        return user.savedJobs;
+      }
       throw AuthenticationError;
     },
     location: async (parent, args) => {
@@ -91,18 +107,20 @@ const resolvers = {
       return { token, user };
     },
     favoriteJob: async (parent, { jobId }, context) => {
-      return User.findOneAndUpdate(
+      let user = await User.findOneAndUpdate(
         { _id: context.user._id },
         { $addToSet: { savedJobs: jobId } },
         { new: true }
       );
+      return user;
     },
     removeJob: async (parent, { jobId }, context) => {
-      return User.findOneAndUpdate(
+      let user = await User.findOneAndUpdate(
         { _id: context.user._id },
         { $pull: { savedJobs: jobId } },
         { new: true }
       );
+      return user;
     },
   }
 };

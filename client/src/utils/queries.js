@@ -40,6 +40,13 @@ query selectLocation($locationId: ID!) {
   }
 }`;
 
+export const QUERY_FAVS = gql`
+query UserFaved {
+  userFaved {
+    _id
+  }
+}`;
+
 export const QUERY_LOCATIONS = gql`
 query allLocations{
   locations {

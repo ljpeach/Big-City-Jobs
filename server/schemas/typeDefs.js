@@ -53,6 +53,7 @@ const typeDefs = `
   type Query {
     user: User
     userJobsPages(page: Int, pageLimit: Int): UserJobPage
+    userFaved: [JobPosting]
     location(locationId: ID!): Location
     locations: [Location]
     job(jobId: ID!): JobPosting
