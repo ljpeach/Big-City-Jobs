@@ -22,29 +22,29 @@ db.once('open', async () => {
 	console.log('seeding employers');
 	const employers = await Employer.insertMany([
 		{
-			name: 'Alphabet',
-			website: 'https://www.google.com/',
-			description: 'The parent company for the largest search engine in the world.',
+			name: 'Local Gift Shop',
+			website: 'https://github.com/ljpeach/',
+			description: 'A quirky shop with tons of interesting trinkets known across town. Join our community!',
 		},
 		{
-			name: 'Amazon',
-			website: 'https://www.amazon.com/',
-			description: 'Offering jobs from Software Development to Warehouse Management. Come join us!',
+			name: 'Grocery Co-Op',
+			website: 'https://github.com/ljpeach/',
+			description: 'A Co-Op for groceries! Work with us and help run our store.',
 		},
 		{
-			name: 'X',
-			website: 'https://www.x.com/',
-			description: 'help please the website is on fire',
+			name: 'Cafe Down The Street',
+			website: 'https://github.com/ljpeach/',
+			description: 'A calm cafe with a good atmosphere and lovely customers. Be a part of one of the best relax spots in town!',
 		},
 		{
-			name: 'CIA',
-			website: 'https://www.cia.gov',
-			description: `shhh, it's a secret`,
+			name: 'Bike Shop',
+			website: 'https://github.com/ljpeach',
+			description: `Become another link in our chain as we service the bicyles that get people from point A to point B and get the wind through their hair! (through a helmet of course.)`,
 		},
 		{
-			name: 'The man in the sewer',
-			website: 'N/A',
-			description: 'accept my quest',
+			name: 'Fabric Store',
+			website: 'https://github.com/ljpeach',
+			description: 'Become a thread that binds together the fiber arts scene in town. Joan would be proud.',
 		},
 	]);
 	console.log('employers seeded');
@@ -55,19 +55,19 @@ db.once('open', async () => {
 	console.log('seeding locations');
 	const locations = await Location.insertMany([
 		{
-			name: 'Chicago',
+			name: 'Oak Park',
 		},
 		{
-			name: 'New York',
+			name: 'River Forest',
 		},
 		{
-			name: 'Los Angeles',
+			name: 'Berwyn',
 		},
 		{
-			name: 'Houston',
+			name: 'Austin',
 		},
 		{
-			name: 'Remote',
+			name: 'Forest Park',
 		},
 	]);
 	console.log('locations seeded');
@@ -79,49 +79,64 @@ db.once('open', async () => {
 	console.log('seeding jobPostings');
 	const jobPostings = await JobPosting.insertMany([
 		{
-			name: 'Software Engineer',
-			location: locations[4],
-			employer: employers[0],
-			details: 'Become a Software Engineer for Google!',
-			available: true,
-			applyLink: 'N/A',
-			pay: '$90,000/yr',
-		},
-		{
-			name: 'Secret Agent',
+			name: 'Stocking and Cashier Position',
 			location: locations[0],
-			employer: employers[3],
-			details: 'Shhhhhhh',
+			employer: employers[0],//gift shop
+			details: 'We need a friendly worker to stock our shelves and run the register.',
+			applyLink: 'https://www.linkedin.com/in/liam-peachey/',
+			pay: '$45,000/yr',
 			available: true,
 		},
 		{
-			name: 'Find My Dog',
+			name: 'Delivery Driver',
 			location: locations[1],
-			employer: employers[4],
-			details: 'my dog is lost find him',
+			employer: employers[1],//grocery
+			details: 'Our store also delivers to local restraunts! Drive our truck to deliver supplies. Must have a CDL.',
+			applyLink: 'https://www.linkedin.com/in/liam-peachey/',
+			pay: '$45,000/yr',
 			available: true,
-			pay: '$20',
 		},
 		{
-			name: 'Fix this website everything is on fire!!!',
+			name: 'Barista',
 			location: locations[2],
-			employer: employers[2],
-			details: 'help please everything is broken',
+			employer: employers[2],//cafe
+			details: 'Make our cool drinks! Bake our pastries! Contribute to our playlist! You get free drinks.',
 			available: true,
+			applyLink: 'https://www.linkedin.com/in/liam-peachey/',
+			pay: '$45,000/yr',
+		},
+		{
+			name: 'Technician',
+			location: locations[3],
+			employer: employers[3],//bike shop
+			details: 'Perform maintenance on the bikes that come in. We will show you what to do so do not worry if you feel inexperienced.',
+			available: true,
+			applyLink: 'https://www.linkedin.com/in/liam-peachey/',
+			pay: '$45,000/yr',
+		},
+		{
+			name: 'Corner Knitter',
+			location: locations[4],
+			employer: employers[4],//fabric
+			details: 'We feel like we need someone to sit in the corner of the shop and just knit all day. It would really enhance the vibe of our establishment.',
+			available: true,
+			applyLink: 'https://www.linkedin.com/in/liam-peachey/',
 			pay: '$300,000/yr',
 		},
 	]);
 
 	const moreJobPostings = [];
 
-	const dummyStrings = ['a', 'be', 'aaron', 'beb', 'quw', 'fjowf', '123123', '10r', 'ebr', 'bwbwbwb',];
+	const dummyTitle = ['Example Job Title', 'Example Position', 'Filler Position', 'Insert Position Here'];
+	const dummyDesc = ['Filler Description', 'Example Description', 'Description Details (not real)', 'Text For Description'];
 	for (let i = 0; i < 100; i++) {
 		moreJobPostings.push({
-			name: dummyStrings[Math.floor(Math.random() * dummyStrings.length)],
+			name: dummyTitle[Math.floor(Math.random() * dummyTitle.length)],
 			location: locations[Math.floor(Math.random() * 5)],
 			employer: employers[Math.floor(Math.random() * 5)],
-			details: dummyStrings[Math.floor(Math.random() * dummyStrings.length)],
+			details: dummyDesc[Math.floor(Math.random() * dummyDesc.length)],
 			available: ((Math.floor(Math.random() * 2) === 1) ? true : false),
+			pay: '~What you expect',
 		})
 	}
 
