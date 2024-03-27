@@ -28,7 +28,7 @@ This program can be run through a browser using the link to the the deployed app
 
 ## Usage
 
-The deployed website can be found [here](https://cryptic-gorge-45528-e8e049cdd22a.herokuapp.com/).
+The deployed website can be found [here](https://big-city-jobs-ea5e88559594.herokuapp.com/).
 
 The list of jobs are displayed for the user on the homepage. The user can signup or login to save their favorite jobs. 
 
