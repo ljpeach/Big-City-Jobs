@@ -1,5 +1,4 @@
 import Auth from '../utils/auth';
-import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_JOBS_PAG } from '../utils/queries';
 import { useSearchParams } from 'react-router-dom';
@@ -7,8 +6,6 @@ import JobList from '../components/JobList';
 import PageNav from '../components/PageNav';
 
 export default function HomePage() {
-
-    // const { loading, data, error } = useQuery(QUERY_JOBS);
     const [qString, setQString] = useSearchParams();
 
     let currPage = parseInt(qString.get('page')) || 0;
@@ -18,10 +15,9 @@ export default function HomePage() {
 
     const jobs = data?.jobsPages.jobs || [];
     const count = Math.ceil(parseInt(data?.jobsPages.count) / pageLim);
-    console.log(count);
     return loading ? (<div>loading</div>) : (
-        <div className='d-flex flex-row'>
-            <section id='jobs' className='col-9 p-3'>
+        <div className='d-flex flex-row justify-content-center'>
+            <section id='jobs' className='col-12 col-md-9 p-3'>
                 <h3>Posted Jobs</h3>
                 {jobs.length ? (
                     <>

@@ -1,11 +1,14 @@
 import { useQuery } from '@apollo/client';
+import { useEffect } from 'react';
 import { QUERY_USER } from '../utils/queries';
 import JobList from '../components/JobList';
 
 export default function ProfilePage() {
-	const { loading, data, error } = useQuery(QUERY_USER);
+	const { loading, data, error, refetch } = useQuery(QUERY_USER,);
 
 	const jobs = data?.user.savedJobs;
+
+	useEffect(() => { refetch(); }, []);
 
 	return loading ? (<div>loading</div>) : (
 		<div className='d-flex flex-row'>
@@ -18,7 +21,7 @@ export default function ProfilePage() {
 						showEmployer={true}
 					/>
 				) : (
-					<h3 className="text-center">No one has posted any jobs.</h3>
+					<h3 className="text-center">No Saved Jobs.</h3>
 				)}
 			</section>
 		</div >
